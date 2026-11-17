@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    image: getumbrel/app-proxy:1.0.0
+    restart: on-failure
+    volumes:
+      - ./:/extra:ro
+    ports:
+      - "8123:8123"
+    environment:
+      APP_HOST: paulo-kanban-console_web_1
+      APP_PORT: 3000
+    networks:
+      - default
+      - umbrel_main_network
+
+  web:
+    build: ./web
+    image: kanban-console/web:1.0.0
+    restart: on-failure
+    environment:
+      # vazio = front usa caminhos relativos /api (proxied pelo Next até api:3001)
+      NEXT_PUBLIC_API_URL: ""
+      PORT: 3000
+
+  api:
+    build: ./api
+    image: kanban-console/api:1.0.0
+    restart: on-failure
+    environment:
+      DATA_DIR: /data
+      ASPNETCORE_URLS: http://+:3001
+    volumes:
+      # dados do Hermes Agent (Kanban + logs); ajuste se o app tiver outro id
+      - ${HERMES_DATA_DIR:-/home/umbrel/umbrel/app-data/hermes-agent/data}:/data
+
+networks:
+  default:
+    name: paulo-kanban-console_default
+  umbrel_main_network:
+    external: true
