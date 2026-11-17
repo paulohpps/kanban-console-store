@@ -1,0 +1,6 @@
+format: v1
+version: 1.0.0
+name: Paulo Store
+apps:
+  paulo-kanban-console:
+    path: apps/paulo-kanban-console
