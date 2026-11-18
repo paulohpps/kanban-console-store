@@ -1,4 +1,4 @@
-manifestVersion: 1
+manifestVersion: 1.0.0
 id: paulo-kanban-console
 name: Kanban Console
 version: 1.0.0
@@ -9,7 +9,7 @@ description: >-
   Board visual do Kanban do Hermes Agent com console ao vivo dos workers
   (streaming SSE), histórico de runs, comentários e criação de tasks direto
   da home do Umbrel.
-website: https://github.com/paulohsm/kanban-console
-repo: https://github.com/paulohsm/kanban-console
-support: https://github.com/paulohsm/kanban-console/issues
+website: https://github.com/paulohpps/kanban-console
+repo: https://github.com/paulohpps/kanban-console
+support: https://github.com/paulohpps/kanban-console/issues
 gallery: []
