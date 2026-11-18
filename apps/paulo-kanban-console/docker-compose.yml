@@ -3,7 +3,7 @@ version: "3.7"
 services:
   web:
     build: ./web
-    image: kanban-console/web:1.0.0
+    image: paulohpps/kanban-console-web:1.0.0
     restart: on-failure
     ports:
       - "8123:3000"
@@ -14,7 +14,7 @@ services:
 
   api:
     build: ./api
-    image: kanban-console/api:1.0.0
+    image: paulohpps/kanban-console-api:1.0.0
     restart: on-failure
     environment:
       DATA_DIR: /data
